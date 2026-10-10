@@ -1,0 +1,19 @@
+# /etc/systemd/system/silk-route.service
+[Unit]
+Description=Silk Route Brokerage website
+After=network.target
+
+[Service]
+Type=simple
+User=silkroute
+WorkingDirectory=/opt/silk-route-brokerage
+EnvironmentFile=/opt/silk-route-brokerage/.env
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=full
+ReadWritePaths=/opt/silk-route-brokerage/data
+
+[Install]
+WantedBy=multi-user.target

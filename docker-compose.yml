@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    image: silk-route-brokerage:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATA_DIR: /app/data
+    ports:
+      - "3000:3000"
+    volumes:
+      - quotes-data:/app/data
+volumes:
+  quotes-data:

@@ -1,0 +1,25 @@
+# Render.com blueprint (https://render.com/docs/blueprint-spec)
+services:
+  - type: web
+    name: silk-route-brokerage
+    runtime: node
+    plan: starter
+    buildCommand: npm ci --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    disk:
+      name: quotes
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - { key: NODE_ENV, value: production }
+      - { key: TRUST_PROXY, value: "1" }
+      - { key: DATA_DIR, value: /var/data }
+      - { key: SITE_URL, value: https://www.silkroutebrokerage.com }
+      - { key: MAIL_TO, value: kwilliams@silkroutebrokerage.com }
+      - { key: SMTP_HOST, sync: false }
+      - { key: SMTP_PORT, value: "465" }
+      - { key: SMTP_SECURE, value: "true" }
+      - { key: SMTP_USER, sync: false }
+      - { key: SMTP_PASS, sync: false }
+      - { key: MAIL_FROM, sync: false }

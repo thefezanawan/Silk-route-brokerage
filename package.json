@@ -1,0 +1,30 @@
+{
+  "name": "silk-route-brokerage",
+  "version": "1.0.0",
+  "description": "Silk Route Brokerage LLC website with quote-request backend",
+  "main": "server.js",
+  "private": true,
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test",
+    "check:smtp": "node scripts/check-smtp.js",
+    "audit:prod": "npm audit --omit=dev --audit-level=high"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "nodemailer": "^10.1.0"
+  },
+  "devDependencies": {
+    "smtp-server": "^3.13.6"
+  }
+}

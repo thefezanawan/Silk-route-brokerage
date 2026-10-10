@@ -1,0 +1,35 @@
+SILK ROUTE BROKERAGE LLC — REDESIGNED WEBSITE
+=============================================
+
+FILES
+  index.html                   The complete site. Self-contained: all images are embedded, no assets folder needed.
+  silk-route-standalone.html   Identical copy of index.html (same file, different name).
+  Use either one. Just upload ONE file to your host (rename it index.html if needed).
+
+HOW TO PREVIEW (exact steps)
+  1. Right-click silk-route-redesign.zip > Extract All (do NOT open files from inside the zip preview).
+  2. Open the extracted folder and double-click index.html.
+
+WHERE TO EDIT (top of the <script> block in either HTML file)
+  ENDPOINT              form-handling URL. Empty = quote opens the visitor's email app (kwilliams@silkroutebrokerage.com).
+  NOTIFICATIONS         add {title:"...",date:"...",text:"..."}
+  RATING                4.8 (the overall rating shown in Reviews)
+  REVIEWS               add REAL reviews: {name:"...",role:"...",text:"..."}
+  SHOW_SAMPLE_REVIEWS   true = labelled "Sample · Placeholder" cards show while REVIEWS is empty. Set false to hide them.
+
+EMAIL
+  Every email link and the quote form now open a small window with: Open in Gmail, Open in Outlook,
+  Open my email app, and Copy. So it works even on computers with no default mail app.
+
+ADDING REAL REVIEWS (replaces the 4 sample cards automatically)
+  const REVIEWS=[
+    {name:"Robert Chen",  text:"The exact words Robert approved."},
+    {name:"Sarah Williams", text:"..."},
+  ];
+
+BEFORE GOING LIVE
+  - Replace the 3 sample testimonial cards with real reviews (or set SHOW_SAMPLE_REVIEWS=false).
+  - Confirm the 4.8/5 rating and the "27 years combined" claim are accurate and can be published.
+  - Blog thumbnails load from static.wixstatic.com (as in the original). If a thumbnail fails, a fallback photo shows.
+  - Add a social preview image (og:image) with a full URL once you know your domain.
+  - The aerial dock photo (iStock, watermarked) and Truck.jpg (UG Transportation reference) were NOT used.
