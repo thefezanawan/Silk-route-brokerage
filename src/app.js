@@ -1,4 +1,7 @@
 'use strict';
+const { loadConfig } = require('./config');
+const { createMailer } = require('./services/mailer');
+const { createStorage } = require('./services/storage');
 const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
@@ -75,4 +78,22 @@ function createApp({ cfg, mailer = null, storage, now }) {
   return app;
 }
 
-module.exports = { createApp };
+const vercelCfg = loadConfig();
+
+const vercelMailer = vercelCfg.smtpConfigured
+  ? createMailer(vercelCfg)
+  : null;
+
+const vercelStorage = createStorage({
+  dataDir: vercelCfg.dataDir,
+  enabled: vercelCfg.storeQuotes || !vercelMailer,
+});
+
+const vercelApp = createApp({
+  cfg: vercelCfg,
+  mailer: vercelMailer,
+  storage: vercelStorage,
+});
+
+module.exports = vercelApp;
+module.exports.createApp = createApp;
